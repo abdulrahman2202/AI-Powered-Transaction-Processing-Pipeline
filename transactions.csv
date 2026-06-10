@@ -1,0 +1,8 @@
+txn_id,date,merchant,amount,currency,status,category,account_id,notes
+TXN-901,10-06-2026,Amazon,12000,INR,completed,Shopping,ACC-101,Office equipment
+TXN-902,2026/06/02,Swiggy,$25,USD,completed,,ACC-101,Dinner out
+TXN-903,03/06/2026,Ola,150,INR,completed,Transport,ACC-101,Commute to work
+TXN-904,04-06-2026,IRCTC,450,INR,completed,Travel,ACC-102,Train ticket
+TXN-905,05-06-2026,Amazon,150000,INR,completed,Shopping,ACC-101,Bulk laptop purchase
+,06-06-2026,Rent Payment,18000,INR,completed,,ACC-102,Monthly rent
+TXN-901,10-06-2026,Amazon,12000,INR,completed,Shopping,ACC-101,Office equipment
