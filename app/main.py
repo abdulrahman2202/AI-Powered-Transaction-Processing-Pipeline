@@ -2,9 +2,9 @@
 from fastapi import FastAPI
 # pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
-from api.endpoints import router as api_router
-from core.logging import setup_logging
-from core.config import settings
+from app.api.endpoints import router as api_router
+from app.core.logging import setup_logging
+from app.core.config import settings
 
 # Setup system logging
 setup_logging()

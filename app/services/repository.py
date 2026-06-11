@@ -3,10 +3,10 @@ from typing import List, Optional, Any
 from sqlalchemy.orm import Session
 # pyrefly: ignore [missing-import]
 from sqlalchemy import select
-from models.job import Job
-from models.transaction import Transaction
-from models.summary import JobSummary
-from core.logging import logger
+from app.models.job import Job
+from app.models.transaction import Transaction
+from app.models.summary import JobSummary
+from app.core.logging import logger
 
 class JobRepository:
     @staticmethod

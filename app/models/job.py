@@ -4,7 +4,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Integer, DateTime, Text, Uuid
 # pyrefly: ignore [missing-import]
 from sqlalchemy.orm import relationship
-from db.session import Base
+from app.db.session import Base
 
 class Job(Base):
     __tablename__ = "jobs"

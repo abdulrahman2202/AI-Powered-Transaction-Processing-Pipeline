@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import Column, Numeric, Integer, Text, Uuid, ForeignKey, JSON, String
 # pyrefly: ignore [missing-import]
 from sqlalchemy.orm import relationship
-from db.session import Base
+from app.db.session import Base
 
 class JobSummary(Base):
     __tablename__ = "job_summaries"

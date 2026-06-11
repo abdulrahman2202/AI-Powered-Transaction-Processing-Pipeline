@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime, date
 import hashlib
 import re
-from core.logging import logger
+from app.core.logging import logger
 
 def parse_date(date_str) -> date:
     """Parse a date string in various formats and return a datetime.date object.
