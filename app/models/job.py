@@ -1,6 +1,8 @@
 import uuid
 from datetime import datetime
+# pyrefly: ignore [missing-import]
 from sqlalchemy import Column, String, Integer, DateTime, Text, Uuid
+# pyrefly: ignore [missing-import]
 from sqlalchemy.orm import relationship
 from db.session import Base
 
