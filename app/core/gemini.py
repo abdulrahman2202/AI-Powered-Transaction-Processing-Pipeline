@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 import google.generativeai as genai
 import time
 from core.config import settings
