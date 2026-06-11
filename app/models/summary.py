@@ -1,5 +1,7 @@
 import uuid
+# pyrefly: ignore [missing-import]
 from sqlalchemy import Column, Numeric, Integer, Text, Uuid, ForeignKey, JSON, String
+# pyrefly: ignore [missing-import]
 from sqlalchemy.orm import relationship
 from db.session import Base
 
