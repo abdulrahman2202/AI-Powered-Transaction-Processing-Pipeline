@@ -10,7 +10,8 @@ This system accepts CSV uploads containing financial transactions, processes the
 
 ```mermaid
 graph TD
-    Client[Client / cURL / Browser] -->|Upload CSV / Query| API[FastAPI API Service]
+    User[User / Analyst] -->|Access UI| FE[React Dashboard]
+    FE -->|API Calls / Upload| API[FastAPI API Service]
     API -->|Create Job & Save CSV| DB[(PostgreSQL Database)]
     API -->|Queue Processing Job| Redis[(Redis Broker)]
     Redis -->|Fetch Job Task| Worker[Celery Worker]
@@ -28,6 +29,11 @@ graph TD
 ---
 
 ## Features & Processing Flow
+
+0. **User-Friendly Dashboard**:
+   - Clean, light-themed React interface for non-technical users.
+   - Real-time status polling for background jobs.
+   - Interactive visualization of AI narrative reports and flagged anomalies.
 
 1. **Data Cleaning (Pandas)**:
    - Normalizes date column using multiple formats (`DD-MM-YYYY`, `YYYY/MM/DD`, etc.) to standard ISO format (`YYYY-MM-DD`).
@@ -58,37 +64,11 @@ graph TD
 ## Project Structure
 
 ```text
-├── app/
-│   ├── api/
-│   │   └── endpoints.py          # API route definitions
-│   ├── core/
-│   │   ├── config.py             # Settings validation via pydantic-settings
-│   │   ├── celery.py             # Celery application configuration
-│   │   ├── gemini.py             # Google GenAI SDK configuration
-│   │   └── logging.py            # Global logging setup
-│   ├── db/
-│   │   ├── session.py            # SQLAlchemy engine & DB session generator
-│   │   └── base.py               # Models aggregation for migrations
-│   ├── models/
-│   │   ├── job.py                # Job status SQLAlchemy model
-│   │   ├── transaction.py        # Transaction records SQLAlchemy model
-│   │   └── summary.py            # AI narrative JobSummary SQLAlchemy model
-│   ├── schemas/
-│   │   ├── job.py                # Job Pydantic validators & status shapes
-│   │   ├── transaction.py        # Transaction Pydantic validators
-│   │   └── summary.py            # JobSummary Pydantic validators
-│   ├── services/
-│   │   ├── cleaning.py           # Pandas cleaning pipeline
-│   │   ├── anomaly.py            # Rules-based anomaly detection
-│   │   ├── ai_classification.py  # Batch category classification with Gemini
-│   │   ├── ai_summary.py         # Metrics aggregation & Gemini summary
-│   │   └── repository.py         # DB Repository Pattern classes
-│   ├── worker/
-│   │   └── tasks.py              # Celery background task runners
-│   └── main.py                   # FastAPI initialization & middlewares
+├── app/                          # Backend FastAPI Source
+├── frontend/                     # React + Vite Dashboard Source
 ├── alembic/                      # Database migrations
-├── Dockerfile                    # Unified application container environment
-├── docker-compose.yml            # System services conductor
+├── Dockerfile                    # Backend Docker configuration
+├── docker-compose.yml            # Full system orchestration
 ├── .env                          # Local environment variables
 └── README.md                     # Project documentation
 ```
@@ -104,7 +84,7 @@ graph TD
 ### Step 1: Configure Environment Variables
 Open the `.env` file in the root directory and update your Gemini API key:
 ```env
-GEMINI_API_KEY=AIzaSy...YourKeyHere
+GEMINI_API_KEY=Enter_your_Key_Here
 ```
 
 ### Step 2: Build and Launch Services
@@ -114,19 +94,18 @@ docker compose up --build
 ```
 
 This starts:
-1. **PostgreSQL** (`pipeline_postgres` on port `5432`)
-2. **Redis** (`pipeline_redis` on port `6379`)
-3. **FastAPI App** (`pipeline_api` on port `8000`)
-4. **Celery Worker** (`pipeline_worker`)
-
-*Note: The API container automatically runs Alembic database migrations (`alembic upgrade head`) before opening the server ports.*
+1. **Frontend Dashboard** ([http://localhost:3000](http://localhost:3000))
+2. **FastAPI Backend** ([http://localhost:8000/docs](http://localhost:8000/docs))
+3. **PostgreSQL** (Database)
+4. **Redis** (Task Broker)
+5. **Celery Worker** (Background Processor)
 
 ---
 
-## Interactive API Documentation
-Once the containers are running, open your browser and navigate to:
-- **Swagger UI**: [http://localhost:8000/docs](http://localhost:8000/docs)
-- **Redoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+## Interactive Interfaces
+- **UI Dashboard**: [http://localhost:3000](http://localhost:3000)
+- **API Swagger UI**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **API Redoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 ---
 
