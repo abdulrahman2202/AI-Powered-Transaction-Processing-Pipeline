@@ -73,6 +73,15 @@ services:
       redis:
         condition: service_healthy
 
+  frontend:
+    build: ./frontend
+    container_name: pipeline_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
 volumes:
   postgres_data:
   redis_data:
