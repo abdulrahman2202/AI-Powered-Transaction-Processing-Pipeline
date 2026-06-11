@@ -1,10 +1,10 @@
 from typing import List, Optional, Any
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from app.models.job import Job
-from app.models.transaction import Transaction
-from app.models.summary import JobSummary
-from app.core.logging import logger
+from models.job import Job
+from models.transaction import Transaction
+from models.summary import JobSummary
+from core.logging import logger
 
 class JobRepository:
     @staticmethod

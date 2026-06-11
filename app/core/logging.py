@@ -1,6 +1,6 @@
 import logging
 import sys
-from app.core.config import settings
+from core.config import settings
 
 def setup_logging():
     log_level = getattr(logging, settings.LOG_LEVEL.upper(), logging.INFO)

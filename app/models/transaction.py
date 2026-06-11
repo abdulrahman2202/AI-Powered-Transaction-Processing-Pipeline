@@ -1,7 +1,7 @@
 import uuid
 from sqlalchemy import Column, String, Numeric, Boolean, Text, Uuid, ForeignKey, Date
 from sqlalchemy.orm import relationship
-from app.db.session import Base
+from db.session import Base
 
 class Transaction(Base):
     __tablename__ = "transactions"

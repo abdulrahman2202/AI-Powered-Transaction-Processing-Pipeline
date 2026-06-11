@@ -2,8 +2,8 @@ from pydantic import BaseModel, ConfigDict
 from uuid import UUID
 from datetime import datetime
 from typing import Optional, List, Dict
-from app.schemas.summary import JobSummaryResponse
-from app.schemas.transaction import TransactionResponse
+from schemas.summary import JobSummaryResponse
+from schemas.transaction import TransactionResponse
 
 class JobBase(BaseModel):
     filename: str

@@ -1,8 +1,8 @@
 import json
 from typing import List
-from app.core.logging import logger
-from app.core.gemini import gemini_client
-from app.models.transaction import Transaction
+from core.logging import logger
+from core.gemini import gemini_client
+from models.transaction import Transaction
 
 class AIClassificationService:
     @staticmethod

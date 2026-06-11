@@ -5,14 +5,14 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Query, status
 from sqlalchemy.orm import Session
 
-from app.db.session import get_db
-from app.core.config import settings
-from app.core.logging import logger
-from app.worker.tasks import process_transaction_job
-from app.services.repository import JobRepository, TransactionRepository, JobSummaryRepository
-from app.schemas.job import JobResponse, JobStatusResponse, JobResultsResponse
-from app.schemas.summary import JobSummaryResponse
-from app.schemas.transaction import TransactionResponse
+from db.session import get_db
+from core.config import settings
+from core.logging import logger
+from worker.tasks import process_transaction_job
+from services.repository import JobRepository, TransactionRepository, JobSummaryRepository
+from schemas.job import JobResponse, JobStatusResponse, JobResultsResponse
+from schemas.summary import JobSummaryResponse
+from schemas.transaction import TransactionResponse
 
 router = APIRouter(prefix="/jobs", tags=["Jobs"])
 
@@ -132,8 +132,8 @@ def get_job_results(
 
 @router.get("", response_model=List[JobResponse])
 def list_jobs(
-    status: Optional[str] = Query(None, description="Filter jobs by status (pending, processing, completed, failed)"),
+    job_status: Optional[str] = Query(None, alias="status", description="Filter jobs by status (pending, processing, completed, failed)"),
     db: Session = Depends(get_db)
 ):
     """List all transaction processing jobs, optionally filtered by status."""
-    return JobRepository.list_jobs(db, status=status)
+    return JobRepository.list_jobs(db, status=job_status)

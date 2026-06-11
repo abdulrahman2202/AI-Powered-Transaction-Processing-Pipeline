@@ -2,14 +2,14 @@ import os
 from datetime import datetime
 import pandas as pd
 from celery.exceptions import MaxRetriesExceededError
-from app.core.celery import celery_app
-from app.core.logging import logger
-from app.db.session import SessionLocal
-from app.services.cleaning import DataCleaningService
-from app.services.anomaly import AnomalyDetectionService
-from app.services.ai_classification import AIClassificationService
-from app.services.ai_summary import AISummaryService
-from app.services.repository import JobRepository, TransactionRepository, JobSummaryRepository
+from core.celery import celery_app
+from core.logging import logger
+from db.session import SessionLocal
+from services.cleaning import DataCleaningService
+from services.anomaly import AnomalyDetectionService
+from services.ai_classification import AIClassificationService
+from services.ai_summary import AISummaryService
+from services.repository import JobRepository, TransactionRepository, JobSummaryRepository
 
 @celery_app.task(bind=True, max_retries=3)
 def process_transaction_job(self, job_id: str, file_path: str):

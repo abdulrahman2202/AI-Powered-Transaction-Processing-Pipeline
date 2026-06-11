@@ -1,5 +1,5 @@
 import pandas as pd
-from app.core.logging import logger
+from core.logging import logger
 
 class AnomalyDetectionService:
     @staticmethod

@@ -1,7 +1,7 @@
 import uuid
 from sqlalchemy import Column, Numeric, Integer, Text, Uuid, ForeignKey, JSON, String
 from sqlalchemy.orm import relationship
-from app.db.session import Base
+from db.session import Base
 
 class JobSummary(Base):
     __tablename__ = "job_summaries"

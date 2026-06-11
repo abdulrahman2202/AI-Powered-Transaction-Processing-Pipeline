@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from app.core.config import settings
+from core.config import settings
 
 # Create database engine
 # pool_pre_ping=True helps reconnect if PostgreSQL drops connection

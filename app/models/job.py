@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime
 from sqlalchemy import Column, String, Integer, DateTime, Text, Uuid
 from sqlalchemy.orm import relationship
-from app.db.session import Base
+from db.session import Base
 
 class Job(Base):
     __tablename__ = "jobs"

@@ -1,12 +1,12 @@
 from celery import Celery
-from app.core.config import settings
+from core.config import settings
 
 # Initialize Celery app instance
 celery_app = Celery(
     "transaction_pipeline",
     broker=settings.REDIS_URL,
     backend=settings.REDIS_URL,
-    include=["app.worker.tasks"]
+    include=["worker.tasks"]
 )
 
 # Standard configurations

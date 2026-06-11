@@ -1,7 +1,7 @@
 import google.generativeai as genai
 import time
-from app.core.config import settings
-from app.core.logging import logger
+from core.config import settings
+from core.logging import logger
 
 class GeminiClient:
     def __init__(self):

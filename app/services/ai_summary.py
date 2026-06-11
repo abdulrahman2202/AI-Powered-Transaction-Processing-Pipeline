@@ -1,10 +1,10 @@
 import json
 from typing import List, Dict, Any
 from decimal import Decimal
-from app.core.logging import logger
-from app.core.gemini import gemini_client
-from app.models.transaction import Transaction
-from app.models.summary import JobSummary
+from core.logging import logger
+from core.gemini import gemini_client
+from models.transaction import Transaction
+from models.summary import JobSummary
 
 class AISummaryService:
     @staticmethod
